@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="0dp"
+    tools:context=".AddPostActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar3"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/toolbar"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="60dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Post Title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+android:layout_marginTop="10dp"
+            android:id="@+id/edit_text_title"
+            android:layout_width="match_parent"
+            android:textColorHint="@color/grey"
+            android:layout_height="40dp"
+            android:background="@drawable/edit_text_input"
+            android:hint="Title"
+            android:textColor="@color/black"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:maxHeight="200dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="27dp"
+
+
+            />
+
+        <EditText
+            android:id="@+id/edit_text_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:background="@drawable/edit_text_input"
+            android:hint="Description"
+            android:textColorHint="@color/grey"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:maxHeight="150dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+
+            android:inputType="textMultiLine" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Author"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="27dp"
+            />
+
+        <EditText
+            android:id="@+id/edit_author"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edit_text_input"
+            android:hint="e.g JONATHAN DOE"
+
+            android:textColorHint="@color/grey"
+            android:textColor="@color/black"
+            android:padding="9dp"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:inputType="text" />
+
+
+
+
+        <Button
+            android:id="@+id/save_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE CHANGES"
+            android:textColor="@color/white"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/read_more_btn"
+            />
+
+        />
+
+    </LinearLayout>
+
+</LinearLayout>
