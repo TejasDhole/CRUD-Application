@@ -4,6 +4,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -67,15 +69,56 @@ public class PostAdapter extends ListAdapter<Post, PostAdapter.PostHolder> {
 
     class PostHolder extends RecyclerView.ViewHolder {
         private TextView textViewTitle;
+
         private TextView textViewDescription;
         private Button readmorebtn;
+        private CheckBox likeBtn;
+        private CheckBox dislikeBtn;
+        private TextView likeCount;
+        private TextView dislikeCount;
+
 
         public PostHolder(View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_title);
             textViewDescription = itemView.findViewById(R.id.text_view_description);
             readmorebtn = itemView.findViewById(R.id.ReadMore);
+            likeBtn = itemView.findViewById(R.id.likebtn);
+            dislikeBtn = itemView.findViewById(R.id.dislikebtn);
+            likeCount = itemView.findViewById(R.id.likecount);
+            dislikeCount = itemView.findViewById(R.id.dislikecount);
 
+            likeBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        int count = Integer.parseInt(likeCount.getText().toString());
+                        likeCount.setText(String.valueOf(count + 1));
+                        dislikeBtn.setChecked(false);
+                    } else {
+                        int count = Integer.parseInt(likeCount.getText().toString());
+
+                            likeCount.setText(String.valueOf(count - 1));
+
+                    }
+                }
+            });
+
+            dislikeBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        int count = Integer.parseInt(dislikeCount.getText().toString());
+                        dislikeCount.setText(String.valueOf(count + 1));
+                        likeBtn.setChecked(false);
+                    } else {
+                        int count = Integer.parseInt(dislikeCount.getText().toString());
+
+                            dislikeCount.setText(String.valueOf(count - 1));
+
+                    }
+                }
+            });
             readmorebtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
