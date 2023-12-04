@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.tejas.crudapp.databinding.ActivityViewPostBinding;
@@ -55,6 +56,7 @@ public class ViewPostActivity extends AppCompatActivity {
         binding.textTitle.setText(title);
         binding.textDescription.setText(description);
         binding.Author.setText(author);
+
         binding.editbtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +95,38 @@ public class ViewPostActivity extends AppCompatActivity {
                         })
                         .show();
 
+            }
+        });
+
+        binding.likebtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    int count = Integer.parseInt(binding.likecount.getText().toString());
+                    binding.likecount.setText(String.valueOf(count + 1));
+                    binding.dislikebtn.setChecked(false);
+                } else {
+                    int count = Integer.parseInt(binding.likecount.getText().toString());
+
+                    binding.likecount.setText(String.valueOf(count - 1));
+
+                }
+            }
+        });
+
+        binding.dislikebtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    int count = Integer.parseInt(binding.dislikecount.getText().toString());
+                    binding.dislikecount.setText(String.valueOf(count + 1));
+                    binding.likebtn.setChecked(false);
+                } else {
+                    int count = Integer.parseInt(binding.dislikecount.getText().toString());
+
+                    binding.dislikecount.setText(String.valueOf(count - 1));
+
+                }
             }
         });
     }

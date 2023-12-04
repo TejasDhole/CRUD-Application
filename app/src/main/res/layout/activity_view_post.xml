@@ -115,37 +115,50 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal">
 
-            <ImageView
+
+            <CheckBox
+                android:id="@+id/likebtn"
+                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:src="@drawable/baseline_thumb_up_24"
-                android:textColor="@color/black" />
+                android:button="@drawable/checkstatus_thumbup"/>
+
+
 
             <TextView
+                android:id="@+id/likecount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="5"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="10dp"/>
 
-            <ImageView
+
+            <CheckBox
+                android:id="@+id/dislikebtn"
+                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:src="@drawable/thumb_down"
-                android:textColor="@color/black" />
+                android:button="@drawable/checkstate_thumbdown"
+                android:layout_marginEnd="10dp"/>
+
 
             <TextView
+                android:id="@+id/dislikecount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="10dp"
                 android:text="2"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+
 
         </LinearLayout>
 
