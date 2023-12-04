@@ -1,6 +1,5 @@
 package com.tejas.crudapp;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +27,7 @@ public class ViewPostActivity extends AppCompatActivity {
     private String author;
     private PostViewModel postViewModel;
     int ID;
+    int likectn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +53,13 @@ public class ViewPostActivity extends AppCompatActivity {
         title = intent.getStringExtra("title");
         description = intent.getStringExtra("description");
         author = intent.getStringExtra("author");
+        likectn = intent.getIntExtra("likectn",-1);
+        String stringLikeCtn = String.valueOf(likectn);
         binding.textTitle.setText(title);
         binding.textDescription.setText(description);
         binding.Author.setText(author);
+        binding.VPlikecount.setText(stringLikeCtn);
+
 
         binding.editbtn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +73,7 @@ public class ViewPostActivity extends AppCompatActivity {
             }
         });
 
-        Post post = new Post(title, description, author);
+        Post post = new Post(title, description, author,likectn);
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
         binding.deleteBtn1.setOnClickListener(new View.OnClickListener() {
@@ -102,13 +106,13 @@ public class ViewPostActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    int count = Integer.parseInt(binding.likecount.getText().toString());
-                    binding.likecount.setText(String.valueOf(count + 1));
+                    int count = Integer.parseInt(binding.VPlikecount.getText().toString());
+                    binding.VPlikecount.setText(String.valueOf(count + 1));
                     binding.dislikebtn.setChecked(false);
                 } else {
-                    int count = Integer.parseInt(binding.likecount.getText().toString());
+                    int count = Integer.parseInt(binding.VPlikecount.getText().toString());
 
-                    binding.likecount.setText(String.valueOf(count - 1));
+                    binding.VPlikecount.setText(String.valueOf(count - 1));
 
                 }
             }
@@ -173,7 +177,7 @@ public class ViewPostActivity extends AppCompatActivity {
 binding.textTitle.setText(title);
 binding.textDescription.setText(description);
 binding.Author.setText(author);
-            Post post = new Post(title, description, author);
+            Post post = new Post(title, description, author,likectn);
             post.setId(id);
             postViewModel.update(post);
 

@@ -2,7 +2,6 @@ package com.tejas.crudapp;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -11,12 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.tejas.crudapp.databinding.ActivityMainBinding;
 
 import java.util.List;
@@ -34,6 +30,7 @@ ActivityMainBinding binding;
         setContentView(binding.getRoot());
         binding.myToolbar.setTitle("All POST");
         binding.myToolbar.setTitleMarginStart(400);
+
 
 
 
@@ -83,6 +80,7 @@ ActivityMainBinding binding;
                 intent.putExtra("title", post.getTitle());
                 intent.putExtra("description", post.getDescription());
                 intent.putExtra("author",post.getAuthor());
+                intent.putExtra("likectn",post.getLikectn());
 
                 startActivityForResult(intent, EDIT_POST_REQUEST);
             }
@@ -97,9 +95,10 @@ ActivityMainBinding binding;
             String title = data.getStringExtra("title");
             String description = data.getStringExtra("description");
             String author = data.getStringExtra("author");
+            int likeCtn = data.getIntExtra("likectn",-1);
 
 
-            Post post = new Post(title, description, author);
+            Post post = new Post(title, description, author,likeCtn);
             postViewModel.insert(post);
 
             Toast.makeText(this, "Post saved", Toast.LENGTH_SHORT).show();

@@ -23,6 +23,6 @@ public interface PostDao {
 
 
 
-    @Query("SELECT * FROM Posts_table")
+    @Query("SELECT * FROM Posts_table ORDER BY likectn DESC")
     LiveData<List<Post>> getAllPost();
 }

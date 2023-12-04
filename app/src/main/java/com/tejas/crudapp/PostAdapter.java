@@ -51,6 +51,7 @@ public class PostAdapter extends ListAdapter<Post, PostAdapter.PostHolder> {
         Post currentPost = posts.get(position);
         holder.textViewTitle.setText(currentPost.getTitle());
         holder.textViewDescription.setText(currentPost.getDescription());
+        holder.likeCount.setText(String.valueOf(currentPost.getLikectn()));
     }
 
     @Override
@@ -94,6 +95,8 @@ public class PostAdapter extends ListAdapter<Post, PostAdapter.PostHolder> {
                     if (isChecked) {
                         int count = Integer.parseInt(likeCount.getText().toString());
                         likeCount.setText(String.valueOf(count + 1));
+
+
                         dislikeBtn.setChecked(false);
                     } else {
                         int count = Integer.parseInt(likeCount.getText().toString());
@@ -110,6 +113,7 @@ public class PostAdapter extends ListAdapter<Post, PostAdapter.PostHolder> {
                     if (isChecked) {
                         int count = Integer.parseInt(dislikeCount.getText().toString());
                         dislikeCount.setText(String.valueOf(count + 1));
+
                         likeBtn.setChecked(false);
                     } else {
                         int count = Integer.parseInt(dislikeCount.getText().toString());

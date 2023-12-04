@@ -15,12 +15,19 @@ public class Post {
     private String description;
     private String author;
 
+    public void setLikectn(int likectn) {
+        this.likectn = likectn;
+    }
+
+    private int likectn;
 
 
-    public Post(String title, String description,String author) {
+
+    public Post(String title, String description,String author,int likectn) {
         this.title = title;
         this.description = description;
         this.author = author;
+        this.likectn = likectn;
     }
 
     public void setId(int id) {
@@ -42,4 +49,9 @@ public class Post {
     public String getAuthor() {
         return author;
     }
+    public int getLikectn(){
+        return likectn;
+    }
+
+
 }

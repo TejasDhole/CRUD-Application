@@ -12,6 +12,7 @@ public class PostRepo {
         private PostDao postDao;
         private LiveData<List<Post>> allPost;
 
+
         public PostRepo(Application application) {
             PostDatabase database = PostDatabase.getInstance(application);
             postDao = database.postDao();

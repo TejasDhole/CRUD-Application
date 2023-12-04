@@ -57,9 +57,10 @@ ActivityAddPostBinding binding;
                 String title = binding.editTextTitle.getText().toString();
                 String description = binding.editTextDescription.getText().toString();
                 String author = binding.editAuthor.getText().toString();
+                int likectn = 6;
 
-                if (title.trim().isEmpty() || description.trim().isEmpty()) {
-                    Toast.makeText(this, "Please insert a title and description", Toast.LENGTH_SHORT).show();
+                if (title.trim().isEmpty() || description.trim().isEmpty() || author.trim().isEmpty()) {
+                    Toast.makeText(this, "Please insert a title, description and author", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -67,6 +68,7 @@ ActivityAddPostBinding binding;
                 data.putExtra("title", title);
                 data.putExtra("description", description);
                 data.putExtra("author", author);
+                data.putExtra("likectn",likectn);
 
                 int id = getIntent().getIntExtra("id", -1);
                 if (id != -1) {
