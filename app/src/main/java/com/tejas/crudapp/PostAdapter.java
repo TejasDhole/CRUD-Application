@@ -1,5 +1,6 @@
 package com.tejas.crudapp;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +21,11 @@ public class PostAdapter extends ListAdapter<Post, PostAdapter.PostHolder> {
 
     private List<Post> posts = new ArrayList<>();
     private OnItemClickListener listener;
+    private PostViewModel postViewModel;
 
-    protected PostAdapter() {
+    protected PostAdapter(PostViewModel postViewModel) {
         super(CALLBACK);
+        this.postViewModel = postViewModel;
     }
 
     private static final DiffUtil.ItemCallback<Post> CALLBACK = new DiffUtil.ItemCallback<Post>() {
@@ -92,20 +95,28 @@ public class PostAdapter extends ListAdapter<Post, PostAdapter.PostHolder> {
             likeBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        int count = Integer.parseInt(likeCount.getText().toString());
-                        likeCount.setText(String.valueOf(count + 1));
-
-
+                    int position = getAdapterPosition();
+                    Post currentPost = posts.get(position);
+                    if (isChecked){
+                        System.out.println("like checked");
+                        int likecout = currentPost.getLikectn()+1;
+                        currentPost.setLikectn(likecout);
+                        postViewModel.update(currentPost);
+                        System.out.println( currentPost.getLikectn());
                         dislikeBtn.setChecked(false);
-                    } else {
-                        int count = Integer.parseInt(likeCount.getText().toString());
 
-                            likeCount.setText(String.valueOf(count - 1));
 
+                    }
+                    else {
+                        System.out.println("like uncheaked");
+                        int likecout = currentPost.getLikectn()-1;
+                        currentPost.setLikectn(likecout);
+                        postViewModel.update(currentPost);
+                        System.out.println( currentPost.getLikectn());
                     }
                 }
             });
+
 
             dislikeBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override

@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     public static final int EDIT_POST_REQUEST = 2;
 
     private PostViewModel postViewModel;
+    private PostAdapter adapter;
+
 ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +48,13 @@ ActivityMainBinding binding;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        PostAdapter adapter = new PostAdapter();
-        recyclerView.setAdapter(adapter);
+
 
         postViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication()))
                 .get(PostViewModel.class);
+
+        PostAdapter adapter = new PostAdapter(postViewModel);
+        recyclerView.setAdapter(adapter);
         postViewModel.getAllPost().observe(this, new Observer<List<Post>>() {
             @Override
             public void onChanged(@Nullable List<Post> posts) {

@@ -36,7 +36,7 @@ public class ViewPostActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
-        PostAdapter adapter = new PostAdapter();
+        PostAdapter adapter = new PostAdapter(postViewModel);
 //binding.toolbar.setTitleMarginStart(400);
         binding.toolbar.setTitle("VIEW POST");
         postViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication()))
