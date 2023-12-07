@@ -21,7 +21,7 @@ public class PostAdapter extends ListAdapter<Post, PostAdapter.PostHolder> {
 
     private List<Post> posts = new ArrayList<>();
     private OnItemClickListener listener;
-    private PostViewModel postViewModel;
+    private final PostViewModel postViewModel;
 
     protected PostAdapter(PostViewModel postViewModel) {
         super(CALLBACK);
@@ -72,14 +72,14 @@ public class PostAdapter extends ListAdapter<Post, PostAdapter.PostHolder> {
     }
 
     class PostHolder extends RecyclerView.ViewHolder {
-        private TextView textViewTitle;
+        private final TextView textViewTitle;
 
-        private TextView textViewDescription;
-        private Button readmorebtn;
-        private CheckBox likeBtn;
-        private CheckBox dislikeBtn;
-        private TextView likeCount;
-        private TextView dislikeCount;
+        private final TextView textViewDescription;
+        private final Button readmorebtn;
+        private final CheckBox likeBtn;
+        private final CheckBox dislikeBtn;
+        private final TextView likeCount;
+        private final TextView dislikeCount;
 
 
         public PostHolder(View itemView) {
@@ -124,7 +124,6 @@ public class PostAdapter extends ListAdapter<Post, PostAdapter.PostHolder> {
                     if (isChecked) {
                         int count = Integer.parseInt(dislikeCount.getText().toString());
                         dislikeCount.setText(String.valueOf(count + 1));
-
                         likeBtn.setChecked(false);
                     } else {
                         int count = Integer.parseInt(dislikeCount.getText().toString());
